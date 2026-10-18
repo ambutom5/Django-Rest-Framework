@@ -1,0 +1,47 @@
+###
+GET http://127.0.0.1:8000/morning/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/add/
+Content-Type: application/json
+
+{
+    "num1" : 20,
+    "num2" : 15
+}
+
+###
+POST http://127.0.0.1:8000/substract/
+Content-Type: application/json
+
+{
+    "num1" : 20,
+    "num2" : 15
+}
+
+###
+POST http://127.0.0.1:8000/multiply/
+Content-Type: application/json
+
+{
+    "num1" : 5,
+    "num2" : 3
+}
+
+###
+POST http://127.0.0.1:8000/largest/
+Content-Type: application/json
+
+{
+    "num1" : 5,
+    "num2" : 10
+}
+
+###
+POST http://127.0.0.1:8000/farenheit/
+Content-Type: application/json
+
+{
+    "celcius" : 99
+}

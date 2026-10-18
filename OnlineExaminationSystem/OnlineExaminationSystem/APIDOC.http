@@ -1,0 +1,66 @@
+###
+GET http://127.0.0.1:8000/answers/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/answers/
+Content-Type: application/json
+
+{
+    "question" : "Factorial of 5",
+    "option_a" : "125",
+    "option_b" : "120",
+    "option_c" : "110",
+    "option_d" : "100",
+    "correct_answer" : "120"
+}
+
+###
+POST http://127.0.0.1:8000/answers/
+Content-Type: application/json
+
+{
+    "question" : "x=[1,2,3,4] print(len(x))",
+    "option_a" : "3",
+    "option_b" : "4",
+    "option_c" : "5",
+    "option_d" : "Error",
+    "correct_answer" : "4"
+}
+
+###
+POST http://127.0.0.1:8000/answers/
+Content-Type: application/json
+
+{
+    "question" : "x=[1,2,3,4,5] print(len(x))",
+    "option_a" : "3",
+    "option_b" : "4",
+    "option_c" : "5",
+    "option_d" : "Error",
+    "correct_answer" : "5"
+}
+
+
+###
+GET http://127.0.0.1:8000/answers/1/
+Accept: application/json
+
+
+###
+DELETE http://127.0.0.1:8000/answers/4/
+
+
+###
+PUT http://127.0.0.1:8000/answers/3/
+Content-Type: application/json
+
+{
+    "question" : "x=[5,4,3,2,1] print(len(x))",
+    "option_a" : "3",
+    "option_b" : "4",
+    "option_c" : "5",
+    "option_d" : "Error",
+    "correct_answer" : "5",
+    "expected" : "Error"
+}
