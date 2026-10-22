@@ -1,0 +1,143 @@
+###
+GET http://127.0.0.1:8000/questions/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/questions/
+Content-Type: application/json
+
+{
+    "title" : "Sum of Two Numbers",
+    "language" : "python",
+    "difficulty_level" : "easy",
+    "topic" : "arithematic",
+    "score" : 5,
+    "notes" : "A simple addition pgm",
+    "sample_input" : "5, 2",
+    "sample_output" : "7"
+}
+
+###
+POST http://127.0.0.1:8000/questions/
+Content-Type: application/json
+
+{
+    "title" : "Harshad Number",
+    "language" : "python",
+    "difficulty_level" : "medium",
+    "topic" : "arithematic",
+    "score" : 10,
+    "notes" : "A simple addition pgm",
+    "sample_input" : "5",
+    "sample_output" : "Not Harshad"
+}
+
+###
+POST http://127.0.0.1:8000/questions/
+Content-Type: application/json
+
+{
+    "title" : "Amstrongg Number",
+    "language" : "python",
+    "difficulty_level" : "medium",
+    "topic" : "arithematic",
+    "score" : 10,
+    "notes" : "A simple addition pgm",
+    "sample_input" : "5",
+    "sample_output" : "Not Amstrong",
+    "expected_output" : "No"
+}
+
+
+###
+PUT http://127.0.0.1:8000/questions/3/
+Content-Type:  application/json
+
+{
+    "title" : "fACTORIAL",
+    "language" : "python",
+    "difficulty_level" : "medium",
+    "topic" : "arithematic",
+    "score" : 10,
+    "notes" : "A simple addition pgm",
+    "sample_input" : "5",
+    "sample_output" : "Not Amstrong",
+    "expected_output" : "No"
+}
+
+###
+DELETE http://127.0.0.1:8000/questions/3/
+
+
+###
+GET http://127.0.0.1:8000/questions/4/
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/submissions/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/submissions/
+Content-Type: application/json
+
+{
+    "question_id" : 1,
+    "answer" : "Factorial of 5 is 120",
+    "owner" : "Amy"
+}
+
+###
+POST http://127.0.0.1:8000/submissions/
+Content-Type: application/json
+
+{
+    "question_id" : 10,
+    "answer" : "5 is Prime Number",
+    "owner" : "Amy"
+}
+
+
+###
+POST http://127.0.0.1:8000/submissions/
+Content-Type: application/json
+
+{
+    "question_id" : 25,
+    "answer" : "5 is Prime Number",
+    "owner" : "Ambu"
+}
+
+
+###
+GET http://127.0.0.1:8000/submissions/2/
+Accept: application/json
+
+
+###
+DELETE http://127.0.0.1:8000/submissions/3/
+
+###
+PUT http://127.0.0.1:8000/submissions/2/
+Content-Type: application/json
+
+{
+    "question_id" : 2,
+    "answer" : "5 is a Prime Number!",
+    "owner" : "Ambu"
+}
+
+
+###
+GET http://127.0.0.1:8000/submissions/1/
+Accept: application/json
+
+
+###
+PUT http://127.0.0.1:8000/submissions/1/evaluate/
+Content-Type: application/json
+
+{
+    "points": 6,
+    "remarks": "Average Logic"
+}
