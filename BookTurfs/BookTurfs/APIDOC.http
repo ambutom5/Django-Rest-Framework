@@ -1,0 +1,35 @@
+###
+GET http://127.0.0.1:8000/turfs/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/turfs/
+Content-Type: application/json
+
+{
+    "turf_name": "Cricket-1",
+    "location" : "Kalamassery",
+    "price_per_hour" : 300.00
+}
+
+###
+GET http://127.0.0.1:8000/turfs/4/
+Accept: application/json
+
+###
+PUT http://127.0.0.1:8000/turfs/2/
+Content-Type: application/json
+
+{
+    "turf_name": "Cricket-1",
+    "location" : "Kalamassery",
+    "price_per_hour" : 300.00
+}
+
+###
+DELETE http://127.0.0.1:8000/turfs/2/
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/booking/
+Accept: application/json

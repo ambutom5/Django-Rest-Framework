@@ -84,16 +84,20 @@ class AppointmentListCreateView(APIView):
 
                 if next_time.time() == time(18,00):
                     raise serializers.ValidationError("Booking Closed!")
-
+                
                 form_data["appointment_time"] = next_time.time()
-                        
+                                    
                        
             qs = AppointmentDb.objects.create(**form_data)
             serializer_instance = AppointmentSerializer(qs)
-            return Response(data={"Message" : "Booked Successfully!",
+            return Response(data = {
+                "Message" : "Booked Successfully!",
                 "Token Number is " : form_data["token_number"],
                 "Appointment Date is" : form_data["appointment_date"],
                 "Appointment Time is" : form_data["appointment_time"]
                 })
         else:
             return Response(serializer_instance.errors)
+
+
+

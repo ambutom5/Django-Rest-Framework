@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from clinic.models import DoctorDb,AppointmentDb
+from datetime import datetime
+from django.utils import timezone
 
 class DoctorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,6 +19,9 @@ class AppointmentSerializer(serializers.ModelSerializer):
     def validate(self,validated_data):
         phone = validated_data.get("phone")
         appointment_date = validated_data.get("appointment_date")
+        # if appointment_date < datetime.today().date():
+        if appointment_date < timezone.localdate():
+            raise serializers.ValidationError("Invalid Date!")
         if AppointmentDb.objects.filter(phone=phone,appointment_date=appointment_date).exists():
             raise serializers.ValidationError("Already booked!")
         else:

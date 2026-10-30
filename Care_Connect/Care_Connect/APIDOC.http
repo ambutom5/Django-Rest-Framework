@@ -130,7 +130,7 @@ Content-Type: application/json
 
 {
     "patient_name" : "Linto Thomas",
-    "phone" : 9575741201,
+    "phone" : 9005741201,
     "doctor_id" : 1,
     "appointment_date" :  "2026-10-28",
     "problem" : "Fever"
