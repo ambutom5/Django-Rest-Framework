@@ -16,6 +16,8 @@ class BookingSerializer(serializers.ModelSerializer):
         read_only_fields = ["id"]
 
     def validate(self, validated_data):
+        print(self.instance)
+        print(self.instance.id)
         turf = validated_data.get("turf")
         booking_date = validated_data.get("booking_date")
         start_time = validated_data.get("start_time")
@@ -27,18 +29,21 @@ class BookingSerializer(serializers.ModelSerializer):
         if start_time >= end_time:
             raise serializers.ValidationError("End time must be greater than start time")
 
-        if BookingDb.objects.filter(
+        overlapping_bookings = BookingDb.objects.filter(
             turf = turf,
             booking_date = booking_date,
             start_time__lt = end_time,
-            end_time__gt = start_time).exists():
-            raise serializers.ValidationError("Turf already booked for this slot")
+            end_time__gt = start_time)
+        
+        # Exclude the current booking during update
+        if self.instance:
+            overlapping_bookings = overlapping_bookings.exclude(id=self.instance.id)
+
+        if overlapping_bookings.exists():
+            raise serializers.ValidationError("Slot Not Available!")
 
         else:
             return validated_data
-
-
-
 
 
 

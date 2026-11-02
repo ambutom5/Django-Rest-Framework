@@ -23,4 +23,5 @@ urlpatterns = [
     path('turfs/',views.TurfListCreateView.as_view()),
     path('turfs/<pk>/',views.TurfRetrieveUpdateDeleteView.as_view()),
     path('booking/',views.BookingListCreateView.as_view()),
+    path('booking/<pk>/',views.BookingRetrieveUpdateDeleteView.as_view()),
 ]

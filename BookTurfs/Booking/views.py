@@ -59,3 +59,25 @@ class BookingListCreateView(APIView):
             return Response(serializer_instance.data)
         else:
             return Response(serializer_instance.errors)
+
+class BookingRetrieveUpdateDeleteView(APIView):
+    def get(self,request,pk):
+        qs = get_object_or_404(BookingDb,id=pk)
+        serializer_instance = BookingSerializer(qs)
+        return Response(serializer_instance.data)
+
+    def delete(self,request,pk):
+        qs = get_object_or_404(BookingDb,id=pk)
+        qs.delete()
+
+    def put(self,request,pk):
+        form_data = request.data
+        qs = get_object_or_404(BookingDb,id=pk)
+        serializer_instance = BookingSerializer(data=form_data,instance=qs)
+        if serializer_instance.is_valid():
+            serializer_instance.save()
+            return Response(serializer_instance.data)
+        else:
+            return Response(serializer_instance.errors)
+
+
