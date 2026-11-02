@@ -43,10 +43,19 @@ class TurfRetrieveUpdateDeleteView(APIView):
         qs = get_object_or_404(TurfDb,id=pk)
         qs.delete()
         return Response({"Message":"Deleted!"})
-
+    
 
 class BookingListCreateView(APIView):
     def get(self,request):
         qs = BookingDb.objects.all()
         serializer_instance = BookingSerializer(qs,many=True)
         return Response(serializer_instance.data)
+    
+    def post(self,request):
+        form_data = request.data
+        serializer_instance = BookingSerializer(data=form_data)
+        if serializer_instance.is_valid():
+            serializer_instance.save()
+            return Response(serializer_instance.data)
+        else:
+            return Response(serializer_instance.errors)

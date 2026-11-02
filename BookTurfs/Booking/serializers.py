@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from Booking.models import TurfDb, BookingDb
+from datetime import datetime
 
 class TurfSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,3 +14,52 @@ class BookingSerializer(serializers.ModelSerializer):
         model = BookingDb
         fields = "__all__"
         read_only_fields = ["id"]
+
+    def validate(self, validated_data):
+        turf = validated_data.get("turf")
+        booking_date = validated_data.get("booking_date")
+        start_time = validated_data.get("start_time")
+        end_time = validated_data.get("end_time")
+
+        if booking_date < datetime.today().date():
+            raise serializers.ValidationError("Booking Date Can't be Older Date")
+
+        if start_time >= end_time:
+            raise serializers.ValidationError("End time must be greater than start time")
+
+        if BookingDb.objects.filter(
+            turf = turf,
+            booking_date = booking_date,
+            start_time__lt = end_time,
+            end_time__gt = start_time).exists():
+            raise serializers.ValidationError("Turf already booked for this slot")
+
+        else:
+            return validated_data
+
+
+
+
+
+
+"""
+How Slot Validation Works
+Existing Start < New End AND Existing End > New Start
+
+Existing Booking:
+5 PM - 7 PM
+
+New Booking:
+6 PM - 8 PM
+
+Check:
+start_time__lt=end_time
+5 PM < 8 PM ✅
+
+and
+
+end_time__gt=start_time
+7 PM > 6 PM ✅
+
+Both true ⇒ overlap found ⇒ booking rejected.
+"""

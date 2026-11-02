@@ -13,6 +13,7 @@ class TurfDb(models.Model):
 class BookingDb(models.Model):
     customer_name = models.CharField(max_length=100)
     mobile_number = models.CharField(max_length = 15)
+    turf = models.ForeignKey(TurfDb, on_delete = models.CASCADE)
     booking_date = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()
