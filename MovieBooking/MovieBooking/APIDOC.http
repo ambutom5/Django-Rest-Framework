@@ -1,0 +1,57 @@
+###
+GET http://127.0.0.1:8000/movies/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/movies/
+Content-Type:  application/json
+
+{
+    "movie_name" : "BKU"
+}
+
+###
+GET http://127.0.0.1:8000/movies/5/
+Accept: application/json
+
+###
+PUT http://127.0.0.1:8000/movies/2/
+Content-Type:  application/json
+
+{
+    "movie_name" : "BKU"
+}
+
+###
+DELETE http://127.0.0.1:8000/movies/3/
+
+
+###
+GET http://127.0.0.1:8000/shows/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/shows/
+Content-Type:  application/json
+
+{
+    "movie": 1,
+    "show_date": "2026-11-05",
+    "show_time": "18:00:00",
+    "total_seats": 100
+}
+
+###
+GET http://127.0.0.1:8000/shows/1/
+Accept: application/json
+
+###
+POST http://127.0.0.1:8000/shows/1/
+Content-Type:  application/json
+
+{
+    "movie": 1,
+    "show_date": "2026-11-05",
+    "show_time": "18:00:00",
+    "total_seats": 100
+}
