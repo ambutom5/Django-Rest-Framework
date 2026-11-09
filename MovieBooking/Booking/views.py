@@ -2,9 +2,21 @@ from django.shortcuts import render,get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from Booking.models import MovieDb, ShowDb, BookingDb
-from Booking.serializers import MovieSerializer, ShowSerializer, BookingSerializer
+from Booking.serializers import MovieSerializer, ShowSerializer, BookingSerializer, UserSerializer
+from django.contrib.auth.models import User
 
 # Create your views here.
+
+class UserSignUpView(APIView):
+    def post(self,request):
+        form_data = request.data
+        serializer_instance = UserSerializer(data =form_data)
+        if serializer_instance.is_valid():
+            serializer_instance.save()
+            return Response({"Message":"User Created Successfully!"},status=201)
+        else:
+            return Response({"Message":"Invalid Details!"},status=400)
+        
 
 class MovieListCreateView(APIView):
     def get(self,request):

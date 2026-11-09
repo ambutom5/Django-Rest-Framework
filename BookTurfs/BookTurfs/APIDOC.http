@@ -1,4 +1,14 @@
 ###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username": "ambutom",
+    "password" : "ambbutom",
+    "email" : "ambutom@gmail.com"
+}
+
+###
 GET http://127.0.0.1:8000/turfs/
 Accept: application/json
 
