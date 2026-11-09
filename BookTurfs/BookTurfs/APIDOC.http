@@ -9,15 +9,22 @@ Content-Type: application/json
 }
 
 ###
+GET http://127.0.0.1:8000/users/
+Accept: application/json
+
+
+###
 GET http://127.0.0.1:8000/turfs/
 Accept: application/json
+Authorization: Basic ambutom:ambbutom
 
 ###
 POST http://127.0.0.1:8000/turfs/
 Content-Type: application/json
+Authorization: Basic ambutom:ambbutom
 
 {
-    "turf_name": "Cricket-1",
+    "turf_name": "Cricket-3",
     "location" : "Kalamassery",
     "price_per_hour" : 300.00
 }

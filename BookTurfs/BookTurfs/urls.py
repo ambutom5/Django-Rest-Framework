@@ -21,6 +21,7 @@ from Booking import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/',views.UserSignUpView.as_view()),
+    path('users/',views.UserListView.as_view()),
     path('turfs/',views.TurfListCreateView.as_view()),
     path('turfs/<pk>/',views.TurfRetrieveUpdateDeleteView.as_view()),
     path('booking/',views.BookingListCreateView.as_view()),

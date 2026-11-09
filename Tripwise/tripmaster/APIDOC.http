@@ -7,3 +7,26 @@ Content-Type: application/json
     "password" : "ambutom55",
     "email" : "ambutom55@gmail.com"
 }
+
+###
+GET http://127.0.0.1:8000/users/
+Accept: application/json
+
+
+###
+GET http://127.0.0.1:8000/trips/
+Accept: application/json
+Authorization: Basic ambutom5:ambutom55
+
+
+###
+POST http://127.0.0.1:8000/trips/
+Content-Type: application/json
+Authorization: Basic ambutom5:ambutom55
+
+{
+    "title" : "Trip to Paris",
+    "start_date" : "2026-12-12",
+    "destination" : "Paris"
+}
+

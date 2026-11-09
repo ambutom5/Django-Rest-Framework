@@ -3,7 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from Booking.models import TurfDb, BookingDb
 from django.contrib.auth.models import User
-from Booking.serializers import TurfSerializer, BookingSerializer,UserSerializer
+from Booking.serializers import TurfSerializer, BookingSerializer, UserSerializer
+from rest_framework import permissions, authentication
 
 # Create your views here.
 
@@ -17,7 +18,16 @@ class UserSignUpView(APIView):
         else:
             return Response(serializer_instance.errors,status=400)
 
+class UserListView(APIView):
+    def get(self,request):
+        qs = User.objects.all()
+        serializer_instance = UserSerializer(qs, many=True)
+        return Response(serializer_instance.data)
+
 class TurfListCreateView(APIView):
+    authentication_classes = [authentication.BasicAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self,request):
         qs = TurfDb.objects.all()
         serializer_instance = TurfSerializer(qs,many=True)
