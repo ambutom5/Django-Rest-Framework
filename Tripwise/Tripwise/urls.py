@@ -23,4 +23,5 @@ urlpatterns = [
     path('register/',views.SignUpView.as_view()),
     path('users/',views.UserListView.as_view()),
     path('trips/',views.TripListCreateView.as_view()),
+    path('trips/<pk>/',views.TripRetrieveUpdateDeleteView.as_view()),
 ]

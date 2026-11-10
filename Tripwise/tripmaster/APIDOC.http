@@ -9,6 +9,16 @@ Content-Type: application/json
 }
 
 ###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username" : "krishna5",
+    "password" : "krishna55",
+    "email" : "krishna55@gmail.com"
+}
+
+###
 GET http://127.0.0.1:8000/users/
 Accept: application/json
 
@@ -30,3 +40,35 @@ Authorization: Basic ambutom5:ambutom55
     "destination" : "Paris"
 }
 
+###
+POST http://127.0.0.1:8000/trips/
+Content-Type: application/json
+Authorization: Basic krishna5:krishna55
+
+{
+    "title" : "Trip to France",
+    "start_date" : "2026-12-12",
+    "destination" : "France"
+}
+
+###
+GET http://127.0.0.1:8000/trips/2/
+Accept: application/json
+Authorization: Basic ambutom5:ambutom55
+
+
+###
+PUT http://127.0.0.1:8000/trips/5/
+Content-Type: application/json
+Authorization: Basic ambutom5:ambutom55
+
+{
+    "title" : "Trip to Paris",
+    "start_date" : "2026-12-25",
+    "destination" : "Paris"
+}
+
+
+###
+DELETE http://127.0.0.1:8000/trips/5/
+Authorization: Basic ambutom5:ambutom55
