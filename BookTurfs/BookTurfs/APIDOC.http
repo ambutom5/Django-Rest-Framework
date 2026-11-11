@@ -9,22 +9,34 @@ Content-Type: application/json
 }
 
 ###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username": "anutom",
+    "password" : "annutom",
+    "email" : "anutom@gmail.com"
+}
+
+###
 GET http://127.0.0.1:8000/users/
 Accept: application/json
+Authorization: Basic ambutom5:Anu@mbu5
+#SuperUser
 
 
 ###
 GET http://127.0.0.1:8000/turfs/
 Accept: application/json
-Authorization: Basic ambutom:ambbutom
+Authorization: Basic ambutom5:Anu@mbu5
 
 ###
 POST http://127.0.0.1:8000/turfs/
 Content-Type: application/json
-Authorization: Basic ambutom:ambbutom
+Authorization: Basic ambutom5:Anu@mbu5
 
 {
-    "turf_name": "Cricket-3",
+    "turf_name": "Cricket-1",
     "location" : "Kalamassery",
     "price_per_hour" : 300.00
 }
@@ -32,6 +44,7 @@ Authorization: Basic ambutom:ambbutom
 ###
 POST http://127.0.0.1:8000/turfs/
 Content-Type: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 {
     "turf_name": "Cricket-2",
@@ -43,6 +56,7 @@ Content-Type: application/json
 ###
 POST http://127.0.0.1:8000/turfs/
 Content-Type: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 {
     "turf_name": "Football-1",
@@ -53,6 +67,7 @@ Content-Type: application/json
 ###
 POST http://127.0.0.1:8000/turfs/
 Content-Type: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 {
     "turf_name": "Football-2",
@@ -64,65 +79,86 @@ Content-Type: application/json
 ###
 GET http://127.0.0.1:8000/turfs/4/
 Accept: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 ###
-PUT http://127.0.0.1:8000/turfs/5/
+PUT http://127.0.0.1:8000/turfs/1/
 Content-Type: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 {
     "turf_name": "Cricket-1",
     "location" : "Kalamassery",
-    "price_per_hour" : 300.00
+    "price_per_hour" : 350.00
 }
 
 ###
 DELETE http://127.0.0.1:8000/turfs/2/
 Accept: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 ###
 GET http://127.0.0.1:8000/booking/
 Accept: application/json
+Authorization: Basic anutom:annutom
+
+###
+GET http://127.0.0.1:8000/booking/
+Accept: application/json
+Authorization: Basic ambutom:ambbutom
 
 
 ###
 POST http://127.0.0.1:8000/booking/
 Content-Type: application/json
+Authorization: Basic ambutom:ambbutom
 
 {
     "turf" : 1,
-    "customer_name": "Arun",
-    "mobile_number": "9876543210",
-    "booking_date": "2026-11-02",
-    "start_time": "17:00:00",
-    "end_time": "19:00:00"
+    "customer_name": "Amy",
+    "mobile_number": "9870043210",
+    "booking_date": "2026-11-12",
+    "start_time": "22:00:00",
+    "end_time": "23:00:00"
 }
 
 ###
 POST http://127.0.0.1:8000/booking/
 Content-Type: application/json
+Authorization: Basic ambutom:ambbutom
 
 {
     "turf" : 2,
     "customer_name": "Manu",
     "mobile_number": "9876543210",
-    "booking_date": "2026-11-02",
+    "booking_date": "2026-11-12",
     "start_time": "14:00:00",
     "end_time": "16:00:00"
 }
 
 ###
-GET http://127.0.0.1:8000/booking/3/
+GET http://127.0.0.1:8000/booking/2/
 Accept: application/json
+Authorization: Basic anutom:annutom
+# Authorization: Basic ambutom:ambbutom
 
 ###
-PUT http://127.0.0.1:8000/booking/3/
+PUT http://127.0.0.1:8000/booking/2/
 Content-Type: application/json
+Authorization: Basic ambutom:ambbutom
+# Authorization: Basic anutom:annutom
 
 {
     "turf" : 3,
     "customer_name": "Manu",
     "mobile_number": "9876543210",
-    "booking_date": "2026-11-02",
+    "booking_date": "2026-11-20",
     "start_time": "15:00:00",
     "end_time": "16:00:00"
 }
+
+###
+DELETE http://127.0.0.1:8000/booking/2/
+Accept: application/json
+Authorization: Basic ambutom:ambbutom
+# Authorization: Basic anutom:annutom

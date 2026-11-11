@@ -35,9 +35,9 @@ Content-Type: application/json
 Authorization: Basic ambutom5:ambutom55
 
 {
-    "title" : "Trip to Paris",
+    "title" : "Trip to Malasia",
     "start_date" : "2026-12-12",
-    "destination" : "Paris"
+    "destination" : "Malasia"
 }
 
 ###
@@ -70,5 +70,5 @@ Authorization: Basic ambutom5:ambutom55
 
 
 ###
-DELETE http://127.0.0.1:8000/trips/5/
+DELETE http://127.0.0.1:8000/trips/3/
 Authorization: Basic ambutom5:ambutom55

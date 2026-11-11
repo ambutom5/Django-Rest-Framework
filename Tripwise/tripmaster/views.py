@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from tripmaster.serializers import UserSerializer, TripSerializer
 from rest_framework import authentication, permissions, serializers
 from tripmaster.models import TripDb
+from tripmaster import permissions as cpermissions
 
 # Create your views here.
 
@@ -28,7 +29,8 @@ class UserListView(APIView):
 
 class TripListCreateView(APIView):
     authentication_classes = [authentication.BasicAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
+    
 
     def get(self,request):
         qs = TripDb.objects.filter(created_by = request.user)
@@ -48,7 +50,8 @@ class TripListCreateView(APIView):
 
 class TripRetrieveUpdateDeleteView(APIView):
     authentication_classes = [authentication.BasicAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated,cpermissions.OwnerOnly]
 
     def get(self,request,pk):
         qs = get_object_or_404(TripDb,id=pk)
@@ -87,8 +90,6 @@ class TripRetrieveUpdateDeleteView(APIView):
                 return Response(serializer_instance.errors)
 
 
-
-
     def delete(self,request,pk):
         qs = get_object_or_404(TripDb,id=pk)
         if qs.created_by == request.user:
@@ -96,6 +97,7 @@ class TripRetrieveUpdateDeleteView(APIView):
             return Response({"Message":"Trip Deleted!"})
         else:
             return Response({"Message":"Not Authorized!"})
+        self.check_object_permissions(request,qs)
 
 
 

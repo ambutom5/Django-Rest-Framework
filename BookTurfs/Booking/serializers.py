@@ -22,11 +22,9 @@ class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookingDb
         fields = "__all__"
-        read_only_fields = ["id"]
+        read_only_fields = ["created_by"]
 
     def validate(self, validated_data):
-        print(self.instance)
-        print(self.instance.id)
         turf = validated_data.get("turf")
         booking_date = validated_data.get("booking_date")
         start_time = validated_data.get("start_time")
