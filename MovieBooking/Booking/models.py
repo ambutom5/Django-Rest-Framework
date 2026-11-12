@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -20,8 +21,13 @@ class ShowDb(models.Model):
 class BookingDb(models.Model):
     customer_name = models.CharField(max_length=200)
     mobile_number = models.CharField(max_length=10)
-    show = models.ForeignKey(ShowDb, on_delete=models.CASCADE)
+    movie = models.ForeignKey(MovieDb,on_delete=models.CASCADE,related_name="movie_details")
+    show = models.ForeignKey(ShowDb, on_delete=models.CASCADE,related_name="show_details")
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="user_details")
     seats_booked = models.PositiveIntegerField()
 
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['user','movie','show'],name="unique_booking")]
+
     def __str__(self):
-        return self.customer_name
+        return f"{self.movie.movie_name}-{self.show.show_time}-{self.customer_name}"

@@ -21,8 +21,10 @@ from Booking import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/',views.UserSignUpView.as_view()),
+    path('members/',views.UserListView.as_view()),
     path('movies/',views.MovieListCreateView.as_view()),
     path('movies/<pk>/',views.MovieRetrieveUpdateDeleteView.as_view()),
     path('shows/',views.ShowListCreateView.as_view()),
     path('shows/<pk>/',views.ShowRetrieveUpdateDeleteView.as_view()),
+    path('ongoing/',views.ShowListView.as_view()),
 ]

@@ -1,12 +1,30 @@
 ###
+GET http://127.0.0.1:8000/members/
+Accept: application/json
+Authorization: Basic ambutom5:Anu@mbu5
+
+
+###
 POST http://127.0.0.1:8000/register/
 Content-Type:  application/json
 
 {
-    "username" : "anuambutommmm",
-    "password" : "anu@mbu789000",
-    "email" : "ambuyom5678000@gmail.com"
+    "username" : "anu",
+    "password" : "anu5",
+    "email" : "anu5@gmail.com"
 }
+
+
+###
+POST http://127.0.0.1:8000/register/
+Content-Type:  application/json
+
+{
+    "username" : "ambu",
+    "password" : "ambu5",
+    "email" : "ambu5@gmail.com"
+}
+
 
 ###
 GET http://127.0.0.1:8000/movies/
@@ -65,3 +83,9 @@ Content-Type:  application/json
     "show_time": "18:00:00",
     "total_seats": 100
 }
+
+
+###
+GET http://127.0.0.1:8000/ongoing/
+Accept: application/json
+Authorization: Basic anu:anu5

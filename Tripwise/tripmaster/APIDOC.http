@@ -60,7 +60,7 @@ Authorization: Basic ambutom5:ambutom55
 ###
 PUT http://127.0.0.1:8000/trips/5/
 Content-Type: application/json
-Authorization: Basic ambutom5:ambutom55
+Authorization: Basic krishna5:krishna55
 
 {
     "title" : "Trip to Paris",
@@ -72,3 +72,19 @@ Authorization: Basic ambutom5:ambutom55
 ###
 DELETE http://127.0.0.1:8000/trips/3/
 Authorization: Basic ambutom5:ambutom55
+
+
+###
+GET http://127.0.0.1:8000/trips/6/members/
+Accept: application/json
+Authorization: Basic ambutom5:ambutom55
+
+
+###
+POST http://127.0.0.1:8000/trips/6/members/
+Content-Type: application/json
+Authorization: Basic ambutom5:ambutom55
+
+{
+    "username" : "manutom19"
+}
