@@ -108,7 +108,6 @@ class BookingRetrieveUpdateDeleteView(APIView):
         qs.delete()
         return Response({"Message":"Booking Deleted!"})
         
-
     def put(self,request,pk):
         form_data = request.data
         qs = get_object_or_404(BookingDb,id=pk)

@@ -75,16 +75,16 @@ Authorization: Basic ambutom5:ambutom55
 
 
 ###
-GET http://127.0.0.1:8000/trips/6/members/
+GET http://127.0.0.1:8000/trips/1/members/
 Accept: application/json
 Authorization: Basic ambutom5:ambutom55
 
 
 ###
-POST http://127.0.0.1:8000/trips/6/members/
+POST http://127.0.0.1:8000/trips/1/members/
 Content-Type: application/json
 Authorization: Basic ambutom5:ambutom55
 
 {
-    "username" : "manutom19"
+    "username" : "krishna55"
 }

@@ -6,6 +6,7 @@ from tripmaster.serializers import UserSerializer, TripSerializer, TripMemberSer
 from rest_framework import authentication, permissions, serializers
 from tripmaster.models import TripDb, TripMemberDb
 from tripmaster import permissions as cpermissions
+from rest_framework.exceptions import PermissionDenied
 
 # Create your views here.
 
@@ -82,21 +83,36 @@ class TripMemberListCreateView(APIView):
     authentication_classes = [authentication.BasicAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self,request,pk):
-        qs = TripMemberDb.objects.all()
-        self.check_object_permissions(request,qs)
-        serializer_instance = TripMemberSerializer(qs)
-        return Response(serializer_instance.data)
+    def get(self,request,trip_id):
+        # Get the trip
+        trip_object = get_object_or_404(TripDb,id=trip_id)
+        # 5, Trip to Munnar, Anas, ...
 
+        is_owner = trip_object.created_by == request.user
+        is_member = TripMemberDb.objects.filter(trip=trip_object,user=request.user).exists()
 
-    def post(self,request,pk):
+        if not (is_owner or is_member):
+            raise PermissionDenied("You are not allowed to access this trip!")
+        
+        # Get all trip members
+        members = TripMemberDb.objects.filter(trip=trip_object)
+        serializer_instance = TripMemberSerializer(members,many=True)
+        return Response(serializer_instance.data,status=200)
+        
+
+    def post(self,request,trip_id):
+        trip_object = get_object_or_404(TripDb,id=trip_id)
+
+        if trip_object.created_by != request.user:
+            raise PermissionDenied("Only trip owner can add members!")
+        
         form_data = request.data
-        serializer_instance = TripMemberSerializer(data=form_data)
+        serializer_instance = TripMemberSerializer(data=form_data,context={'trip':trip_object})
         if serializer_instance.is_valid():
             serializer_instance.save()
-            return Response(serializer_instance.data)
+            return Response({"Message":"Member Added!","Data":serializer_instance.data})
         else:
-            return Response(serializer_instance.errors)
+            return Response(serializer_instance.errors,status =400)
 
 
 
