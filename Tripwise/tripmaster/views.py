@@ -115,6 +115,17 @@ class TripMemberListCreateView(APIView):
             return Response(serializer_instance.errors,status =400)
 
 
+class TripMemberDeleteView(APIView):
+    authentication_classes = [authentication.BasicAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def delete(self,request,trip_id,trip_member_id):
+        trip_object = get_object_or_404(TripDb,id=trip_id)
+        if trip_object.created_by != request.user:
+            raise PermissionDenied("You are not allowed to remove members from this trip!")
+        trip_member_object = TripMemberDb.objects.filter(id=trip_member_id)
+        trip_member_object.delete()
+        return Response({"Message":"Member Deleted!"})
 
 
 

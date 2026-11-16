@@ -19,6 +19,28 @@ Content-Type: application/json
 }
 
 ###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username" : "ansu",
+    "password" : "ansu5",
+    "email" : "ansu5@gmail.com"
+}
+
+
+###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username" : "maddy",
+    "password" : "maddy1",
+    "email" : "maddy1@gmail.com"
+}
+
+
+###
 GET http://127.0.0.1:8000/users/
 Accept: application/json
 
@@ -86,5 +108,12 @@ Content-Type: application/json
 Authorization: Basic ambutom5:ambutom55
 
 {
-    "username" : "krishna55"
+    "username" : "maddy"
 }
+
+
+###
+DELETE http://127.0.0.1:8000/trips/1/members/delete/5/
+Accept: application/json
+Authorization: Basic ambutom5:ambutom55
+# Authorization: Basic maddy:maddy1
