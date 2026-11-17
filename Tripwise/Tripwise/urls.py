@@ -25,6 +25,6 @@ urlpatterns = [
     path('trips/',views.TripListCreateView.as_view()),
     path('trips/<pk>/',views.TripRetrieveUpdateDeleteView.as_view()),
     path('trips/<trip_id>/members/',views.TripMemberListCreateView.as_view()),
-    path('trips/<trip_id>/members/delete/<trip_member_id>/',views.TripMemberDeleteView.as_view()),
+    path('trips/<trip_id>/members/delete/<member_id>/',views.TripMemberDeleteView.as_view()),
 
 ]

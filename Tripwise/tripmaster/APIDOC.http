@@ -113,7 +113,7 @@ Authorization: Basic ambutom5:ambutom55
 
 
 ###
-DELETE http://127.0.0.1:8000/trips/1/members/delete/5/
+DELETE http://127.0.0.1:8000/trips/1/members/delete/4/
 Accept: application/json
 Authorization: Basic ambutom5:ambutom55
 # Authorization: Basic maddy:maddy1

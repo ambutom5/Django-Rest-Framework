@@ -1,0 +1,33 @@
+###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username" : "ambu",
+    "password" : "ambu5",
+    "email" : "ambu5@gmail.com"
+}
+
+###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username" : "anu",
+    "password" : "anu5",
+    "email" : "anu5@gmail.com"
+}
+
+###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username" : "manu",
+    "password" : "manu5",
+    "email" : "manu5@gmail.com"
+}
+
+###
+GET http://127.0.0.1:8000/users/
+Accept:  application/json

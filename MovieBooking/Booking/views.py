@@ -126,3 +126,4 @@ class ShowListView(APIView):
         qs = ShowDb.objects.all()
         serializer_instance = ShowSerializer(qs,many=True)
         return Response(serializer_instance.data)
+
