@@ -29,22 +29,26 @@ Content-Type:  application/json
 ###
 GET http://127.0.0.1:8000/movies/
 Accept: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 ###
 POST http://127.0.0.1:8000/movies/
 Content-Type:  application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 {
     "movie_name" : "BKU"
 }
 
 ###
-GET http://127.0.0.1:8000/movies/5/
+GET http://127.0.0.1:8000/movies/1/
 Accept: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 ###
-PUT http://127.0.0.1:8000/movies/2/
+PUT http://127.0.0.1:8000/movies/1/
 Content-Type:  application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 {
     "movie_name" : "BKU"
@@ -52,36 +56,43 @@ Content-Type:  application/json
 
 ###
 DELETE http://127.0.0.1:8000/movies/3/
+Authorization: Basic ambutom5:Anu@mbu5
 
 
 ###
 GET http://127.0.0.1:8000/shows/
 Accept: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 ###
 POST http://127.0.0.1:8000/shows/
 Content-Type:  application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 {
     "movie": 1,
     "show_date": "2026-11-05",
     "show_time": "18:00:00",
-    "total_seats": 100
+    "total_seats": 100,
+    "available_seats" : 10
 }
 
 ###
-GET http://127.0.0.1:8000/shows/1/
+GET http://127.0.0.1:8000/shows/2/
 Accept: application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 ###
-POST http://127.0.0.1:8000/shows/1/
+PUT http://127.0.0.1:8000/shows/1/
 Content-Type:  application/json
+Authorization: Basic ambutom5:Anu@mbu5
 
 {
     "movie": 1,
     "show_date": "2026-11-05",
     "show_time": "18:00:00",
-    "total_seats": 100
+    "total_seats": 100,
+    "available_seats" : 10
 }
 
 
@@ -89,3 +100,40 @@ Content-Type:  application/json
 GET http://127.0.0.1:8000/ongoing/
 Accept: application/json
 Authorization: Basic anu:anu5
+
+
+###
+GET http://127.0.0.1:8000/booking/
+Accept: application/json
+Authorization: Basic anu:anu5
+
+###
+POST http://127.0.0.1:8000/booking/
+Content-Type:  application/json
+Authorization: Basic anu:anu5
+
+{
+    "show" : 2,
+    "seats_booked" : 5
+}
+
+###
+GET http://127.0.0.1:8000/booking/2/
+Accept: application/json
+Authorization: Basic anu:anu5
+
+###
+DELETE http://127.0.0.1:8000/booking/1/
+Accept: application/json
+Authorization: Basic anu:anu5
+
+
+###
+PUT http://127.0.0.1:8000/booking/2/
+Content-Type:  application/json
+Authorization: Basic anu:anu5
+
+{
+    "show" : 2,
+    "seats_booked" : 3
+}

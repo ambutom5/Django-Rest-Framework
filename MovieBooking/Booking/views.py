@@ -102,7 +102,7 @@ class ShowRetrieveUpdateDeleteView(APIView):
         serializer_instance = ShowSerializer(qs)
         return Response(serializer_instance.data)
 
-    def post(self,request,pk):
+    def put(self,request,pk):
         form_data = request.data
         qs = get_object_or_404(ShowDb,id=pk)
         serializer_instance = ShowSerializer(qs,data=form_data)
@@ -127,3 +127,46 @@ class ShowListView(APIView):
         serializer_instance = ShowSerializer(qs,many=True)
         return Response(serializer_instance.data)
 
+
+class BookingListCreateView(APIView):
+    authentication_classes = [authentication.BasicAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self,request):
+        qs = BookingDb.objects.filter(user=request.user)
+        serializer_instance = BookingSerializer(qs,many=True)
+        return Response(serializer_instance.data)
+
+    def post(self,request):
+        form_data = request.data
+        serializer_instance=BookingSerializer(data=form_data,context={"request":request})
+        if serializer_instance.is_valid():
+            serializer_instance.save()
+            return Response({"Message":"Booked Successfully!","Details":serializer_instance.data},status=201)
+        else:
+            return Response(serializer_instance.errors,status=400)
+
+
+class BookingRetriveUpdateDeleteView(APIView):
+    authentication_classes = [authentication.BasicAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self,request,pk):
+        qs = get_object_or_404(BookingDb,id=pk,user=request.user)
+        serializer_instance = BookingSerializer(qs)
+        return Response(serializer_instance.data)
+
+    def delete(self,request,pk):
+        qs = get_object_or_404(BookingDb,id=pk,user=request.user)
+        qs.delete()
+        return Response({"Message":"Booking Deleted!"})
+
+    def put(self,request,pk):
+        qs = get_object_or_404(BookingDb,id=pk,user=request.user)
+        form_data = request.data
+        serializer_instance = BookingSerializer(data=form_data,instance=qs,context={"request":request})
+        if serializer_instance.is_valid():
+            serializer_instance.save()
+            return Response({"Message":"Booking Updated Successfully!","Details":serializer_instance.data},status=201)
+        else:
+            return Response(serializer_instance.errors,status=400)

@@ -27,4 +27,6 @@ urlpatterns = [
     path('shows/',views.ShowListCreateView.as_view()),
     path('shows/<pk>/',views.ShowRetrieveUpdateDeleteView.as_view()),
     path('ongoing/',views.ShowListView.as_view()),
+    path('booking/',views.BookingListCreateView.as_view()),
+    path('booking/<pk>/',views.BookingRetriveUpdateDeleteView.as_view()),
 ]
