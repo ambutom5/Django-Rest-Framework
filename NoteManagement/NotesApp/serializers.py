@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from NotesApp.models import NotesDb
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -15,3 +16,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             email = validated_data["email"]
         )
         return user
+
+class NotesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NotesDb
+        fields = "__all__"
+        read_only_fields = ["id","user","created_date"]

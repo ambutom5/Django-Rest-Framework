@@ -17,9 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from NotesApp import views
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', views.RegisterView.as_view()),
     path('users/', views.UserListView.as_view()),
+    path('login/',obtain_auth_token),
+    path('notes/', views.NotesListCreateView.as_view()),
+    path('notes/<pk>/', views.NotesRetrieveUpdateDeleteView.as_view()),
 ]

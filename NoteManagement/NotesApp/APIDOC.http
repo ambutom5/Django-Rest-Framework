@@ -31,3 +31,106 @@ Content-Type: application/json
 ###
 GET http://127.0.0.1:8000/users/
 Accept:  application/json
+
+###
+POST http://127.0.0.1:8000/login/
+Content-Type: application/json
+
+{
+    "username" : "ambu",
+    "password" : "ambu5"
+}
+
+###
+POST http://127.0.0.1:8000/login/
+Content-Type: application/json
+
+{
+    "username" : "anu",
+    "password" : "anu5"
+}
+
+###
+POST http://127.0.0.1:8000/login/
+Content-Type: application/json
+
+{
+    "username" : "manu",
+    "password" : "manu5"
+}
+
+###
+GET http://127.0.0.1:8000/notes/
+Accept: application/json
+Authorization: Token 8324c2d535fcd6c9a1334e0f74e52ca8edf12001
+
+###
+GET http://127.0.0.1:8000/notes/
+Accept: application/json
+Authorization: Token 0d205e3eb9a75e4e1cfefee8958c62a2ab1e7abc
+
+###
+GET http://127.0.0.1:8000/notes/
+Accept: application/json
+Authorization: Token 257a677b40a348efca38b886e3885a2383f88461
+
+
+###
+POST http://127.0.0.1:8000/notes/
+Content-Type:  application/json
+Authorization: Token 8324c2d535fcd6c9a1334e0f74e52ca8edf12001
+
+{
+    "title" : "Introduction to Python",
+    "description" : "Python is an OOP language!"
+}
+
+###
+POST http://127.0.0.1:8000/notes/
+Content-Type:  application/json
+Authorization: Token 8324c2d535fcd6c9a1334e0f74e52ca8edf12001
+
+{
+    "title" : "Introduction to Django",
+    "description" : "Django is a high level python based web framework!"
+}
+
+###
+POST http://127.0.0.1:8000/notes/
+Content-Type:  application/json
+Authorization: Token 8324c2d535fcd6c9a1334e0f74e52ca8edf12001
+
+{
+    "title" : "Introduction to DRF",
+    "description" : "DRF is a powerfull toolkit biult on top of Django!"
+}
+
+###
+GET http://127.0.0.1:8000/notes/3/
+Accept: application/json
+Authorization: Token 8324c2d535fcd6c9a1334e0f74e52ca8edf12001
+
+###
+GET http://127.0.0.1:8000/notes/3/
+Accept: application/json
+Authorization: Token 0d205e3eb9a75e4e1cfefee8958c62a2ab1e7abc
+
+###
+GET http://127.0.0.1:8000/notes/3/
+Accept: application/json
+Authorization: Token 257a677b40a348efca38b886e3885a2383f88461
+
+###
+DELETE http://127.0.0.1:8000/notes/2/
+Authorization: Token 8324c2d535fcd6c9a1334e0f74e52ca8edf12001
+
+
+###
+PUT http://127.0.0.1:8000/notes/3/
+Content-Type:  application/json
+Authorization: Token 8324c2d535fcd6c9a1334e0f74e52ca8edf12001
+
+{
+    "title" : "Introduction to DRF",
+    "description" : "DRF is a powerfull toolkit built on top of Django!"
+}

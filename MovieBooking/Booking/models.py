@@ -6,9 +6,6 @@ from django.contrib.auth.models import User
 class MovieDb(models.Model):
     movie_name = models.CharField(max_length=200, unique=True)
 
-    # movie_name = models.CharField(max_length=200, unique=True)
-    # Unique Entry for Movies, Then Django itself prevents duplicates and keep the serializer simple.
-
     def __str__(self):
         return self.movie_name
 
