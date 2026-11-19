@@ -134,3 +134,26 @@ Authorization: Token 8324c2d535fcd6c9a1334e0f74e52ca8edf12001
     "title" : "Introduction to DRF",
     "description" : "DRF is a powerfull toolkit built on top of Django!"
 }
+
+
+
+
+
+###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username" : "leo",
+    "password" : "leo5",
+    "email" : "leo5@gmail.com"
+}
+
+###
+POST http://127.0.0.1:8000/jwt_login/
+Content-Type: application/json
+
+{
+    "username" : "leo",
+    "password" : "leo5"
+}

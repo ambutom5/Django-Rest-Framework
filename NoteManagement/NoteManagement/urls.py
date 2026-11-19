@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from NotesApp import views
 from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('login/',obtain_auth_token),
     path('notes/', views.NotesListCreateView.as_view()),
     path('notes/<pk>/', views.NotesRetrieveUpdateDeleteView.as_view()),
+    path('jwt_login/',TokenObtainPairView.as_view()),
 ]

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from NotesApp.models import NotesDb
+from NotesApp.models import NotesDb, TaskDb
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -20,5 +20,11 @@ class RegisterSerializer(serializers.ModelSerializer):
 class NotesSerializer(serializers.ModelSerializer):
     class Meta:
         model = NotesDb
+        fields = "__all__"
+        read_only_fields = ["id","user","created_date"]
+
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TaskDb
         fields = "__all__"
         read_only_fields = ["id","user","created_date"]

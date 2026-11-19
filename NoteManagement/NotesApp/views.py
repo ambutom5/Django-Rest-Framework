@@ -3,8 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from NotesApp.serializers import RegisterSerializer, NotesSerializer
-from NotesApp.models import NotesDb
+from NotesApp.serializers import RegisterSerializer, NotesSerializer, TaskSerializer
+from NotesApp.models import NotesDb, TaskDb
 from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
@@ -60,6 +60,21 @@ class NotesRetrieveUpdateDeleteView(APIView):
         serializer_instance = NotesSerializer(qs,data=request.data)
         if serializer_instance.is_valid():
             serializer_instance.save()
+            return Response(serializer_instance.data)
+        else:
+            return Response(serializer_instance.errors)
+
+
+class TaskListCreateView(APIView):
+    def get(self,request):
+        qs = TaskDb.objects.filter(user=request.user)
+        serializer_instance = TaskSerializer(qs,many=True)
+        return Response(serializer_instance.data)
+
+    def post(self,request):
+        serializer_instance = TaskSerializer(data=request.data)
+        if serializer_instance.is_valid():
+            serializer_instance.save(user=request.user)
             return Response(serializer_instance.data)
         else:
             return Response(serializer_instance.errors)
