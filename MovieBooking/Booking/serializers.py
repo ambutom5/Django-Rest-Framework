@@ -42,10 +42,10 @@ class BookingSerializer(serializers.ModelSerializer):
 
     def validate(self, validated_data):
         user = self.context["request"].user
-        show = validated_data["show"]
         # DRF removes read-only fields(user) from validated_data.
-
+        show = validated_data["show"]
         seats_booked = validated_data["seats_booked"]
+
         if seats_booked > show.available_seats:
             raise serializers.ValidationError("Not enough seats available!")
         
