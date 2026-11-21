@@ -6,6 +6,7 @@ from rest_framework import serializers
 from NotesApp.serializers import RegisterSerializer, NotesSerializer, TaskSerializer
 from NotesApp.models import NotesDb, TaskDb
 from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your views here.
 
@@ -66,6 +67,8 @@ class NotesRetrieveUpdateDeleteView(APIView):
 
 
 class TaskListCreateView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self,request):
         qs = TaskDb.objects.filter(user=request.user)
         serializer_instance = TaskSerializer(qs,many=True)
@@ -78,3 +81,63 @@ class TaskListCreateView(APIView):
             return Response(serializer_instance.data)
         else:
             return Response(serializer_instance.errors)
+
+
+# class TaskRetrieveUpdateDelete(APIView):
+#     permission_classes = [IsAuthenticated]
+
+#     def get(self,request,pk):
+#         qs = get_object_or_404(TaskDb,id=pk,user=request.user)
+#         serializer_instance = TaskSerializer(qs)
+#         return Response(serializer_instance.data)
+
+#     def post(self,request,pk):
+#         qs = get_object_or_404(TaskDb,id=pk,user=request.user)
+#         serializer_instance = TaskSerializer(qs,data=request.data)
+#         if serializer_instance.is_valid():
+#             serializer_instance.save()
+#             return Response(serializer_instance.data)
+#         else:
+#             return Response(serializer_instance.errors)
+
+#     def delete(self,request,pk):
+#         qs = get_object_or_404(TaskDb,id=pk,user=request.user)
+#         qs.delete()
+#         return Response({"Message":"Task deleted!"})
+
+
+class TaskRetrieveUpdateDelete(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get_task(self,request,id):
+        return get_object_or_404(TaskDb,id=id,user=request.user)
+
+    def get(self,request,id):
+        qs = self.get_task(request,id)
+        serializer_instance = TaskSerializer(qs)
+        return Response(serializer_instance.data)
+
+    def post(self,request,id):
+        qs = self.get_task(request,id)
+        serializer_instance = TaskSerializer(qs,data=request.data)
+        if serializer_instance.is_valid():
+            serializer_instance.save()
+            return Response(serializer_instance.data)
+        else:
+            return Response(serializer_instance.errors)
+
+    def delete(self,request,id):
+        qs = self.get_task(request,id)
+        qs.delete()
+        return Response({"Message":"Task deleted!"})
+
+
+class JWT_Logout(APIView):
+    def post(self,request):
+        try:
+            refresh_token = request.data.get("refresh")
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response({"Message":"Logout Success!"})
+        except Exception:
+            return Response({"Error":"Invalid Refresh Token!"})

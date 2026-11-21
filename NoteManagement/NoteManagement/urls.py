@@ -28,4 +28,8 @@ urlpatterns = [
     path('notes/', views.NotesListCreateView.as_view()),
     path('notes/<pk>/', views.NotesRetrieveUpdateDeleteView.as_view()),
     path('jwt_login/',TokenObtainPairView.as_view()),
+    path('tasks/',views.TaskListCreateView.as_view()),
+    path('refresh/',TokenRefreshView.as_view()),
+    path('tasks/<id>/',views.TaskRetrieveUpdateDelete.as_view()),
+    path('jwt_logout/',views.JWT_Logout.as_view()),
 ]

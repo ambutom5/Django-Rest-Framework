@@ -157,3 +157,76 @@ Content-Type: application/json
     "username" : "leo",
     "password" : "leo5"
 }
+
+
+###
+GET http://127.0.0.1:8000/tasks/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTUyMzQ4LCJpYXQiOjE3OTUxNTIwNDgsImp0aSI6Ijc2NWZlNTE0ZmIzNjRmYmI5NzllMTU1MjJlY2Y3NDUyIiwidXNlcl9pZCI6IjQifQ._bLy1EN_8Bwi5bUmpGRQTdKogY2RidtYZwWZuwJxRu0
+
+
+###
+POST http://127.0.0.1:8000/tasks/
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTQ4NzQwLCJpYXQiOjE3OTUxNDg0NDAsImp0aSI6ImIwM2UwOTA5N2M0ODRlNTg5OWZkZTlkMTNhNDdkMmFkIiwidXNlcl9pZCI6IjQifQ.GIV2AI0IfmFoADei9soWjN61KfiJj0twnEdXnHzyc5c
+
+{
+    "title" : "Factorial of Number",
+    "description" : "Factorial of Number using For Loop",
+    "due_date" : "2026-11-25"
+}
+
+
+###
+POST http://127.0.0.1:8000/tasks/
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTUyMzQ4LCJpYXQiOjE3OTUxNTIwNDgsImp0aSI6Ijc2NWZlNTE0ZmIzNjRmYmI5NzllMTU1MjJlY2Y3NDUyIiwidXNlcl9pZCI6IjQifQ._bLy1EN_8Bwi5bUmpGRQTdKogY2RidtYZwWZuwJxRu0
+
+{
+    "title" : "Factorial of Number",
+    "description" : "Factorial of Number using Recursion",
+    "due_date" : "2026-11-25"
+}
+
+
+###
+POST http://127.0.0.1:8000/refresh/
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTUwMTE5LCJpYXQiOjE3OTUxNDk4MTksImp0aSI6ImZiNzk3ODIzMTk0ODQ5YTQ5ZGU1OGNhMDE2NmNhNGVlIiwidXNlcl9pZCI6IjQifQ.2_3jz3ZY00q9VjhjQPs9lqEw4LIm5JxfzP1joZI8A94
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5NTIzNjIxOSwiaWF0IjoxNzk1MTQ5ODE5LCJqdGkiOiI4YjE2YWYxOTI2MGY0MTEzOWNhMzBhOGQxYjlmMDE5OCIsInVzZXJfaWQiOiI0In0.j4Xi_EJZTYMEyA_2i7WMrDoS-tbsjoBM97K23PjTj8s"
+}
+
+
+###
+GET http://127.0.0.1:8000/tasks/1/
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTUyMzQ4LCJpYXQiOjE3OTUxNTIwNDgsImp0aSI6Ijc2NWZlNTE0ZmIzNjRmYmI5NzllMTU1MjJlY2Y3NDUyIiwidXNlcl9pZCI6IjQifQ._bLy1EN_8Bwi5bUmpGRQTdKogY2RidtYZwWZuwJxRu0
+
+
+###
+POST http://127.0.0.1:8000/tasks/1/
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTUyMTQxLCJpYXQiOjE3OTUxNTE4NDEsImp0aSI6IjA2ODQ1MjhhYjYzOTRlOWVhMWZjZjMxNzdjOTQwYTEyIiwidXNlcl9pZCI6IjQifQ.in3BGT-StLj8SPIKrBevCflMAArA8gKTmWfPpCF7pOY
+
+{
+    "title" : "Factorial of Numberr",
+    "description" : "Factorial of Number using recursion",
+    "due_date" : "2026-11-25"
+}
+
+
+###
+DELETE http://127.0.0.1:8000/tasks/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MTUyMTQxLCJpYXQiOjE3OTUxNTE4NDEsImp0aSI6IjA2ODQ1MjhhYjYzOTRlOWVhMWZjZjMxNzdjOTQwYTEyIiwidXNlcl9pZCI6IjQifQ.in3BGT-StLj8SPIKrBevCflMAArA8gKTmWfPpCF7pOY
+
+
+###
+POST http://127.0.0.1:8000/jwt_logout/
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzk1MjM0MDE0LCJpYXQiOjE3OTUyMzM3MTQsImp0aSI6Ijk3ZTQ1MTZlZjdjMDQ0ZTM4ZjNlN2Y0NWU4YzYwM2ZlIiwidXNlcl9pZCI6IjQifQ.UsKeaEk4fZDQG8NF-Fw27ufGS4DI5bE859SoLx9dhzc
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5NTIzNjIxOSwiaWF0IjoxNzk1MTQ5ODE5LCJqdGkiOiI4YjE2YWYxOTI2MGY0MTEzOWNhMzBhOGQxYjlmMDE5OCIsInVzZXJfaWQiOiI0In0.j4Xi_EJZTYMEyA_2i7WMrDoS-tbsjoBM97K23PjTj8s"
+}
